@@ -33,15 +33,15 @@ jobs:
       # Initialize Terraform
       - name: Terraform Init
         run: terraform init
-        working-directory: workflows # Set the directory where your Terraform files are located
+        working-directory: ec2-resources # Set the directory where your Terraform files are located
 
       # Plan Terraform Deployment
       - name: Terraform Plan
         run: terraform plan
-        working-directory: workflows # Set the directory where your Terraform files are located
+        working-directory: ec2-resources # Set the directory where your Terraform files are located
 
       # Apply Terraform Plan
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
-        working-directory: workflows # Set the directory where your Terraform files are located
+        working-directory: ec2-resources # Set the directory where your Terraform files are located
