@@ -33,11 +33,15 @@ jobs:
       # Initialize Terraform
       - name: Terraform Init
         run: terraform init
+        working-directory: ec2 # Set the directory where your Terraform files are located
 
-      # Terraform Plan
+      # Plan Terraform Deployment
       - name: Terraform Plan
         run: terraform plan -out=tfplan
+        working-directory: ec2 # Set the directory where your Terraform files are located
 
-      # Terraform Apply
+      # Apply Terraform Plan
       - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve tfplan
+        working-directory: ec2 # Set the directory where your Terraform files are located
