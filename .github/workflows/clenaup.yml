@@ -30,7 +30,11 @@ jobs:
       # Initialize Terraform
       - name: Terraform Init
         run: terraform init
+        working-directory: ec2-resources # Set the directory where your Terraform files are located
+
 
       # Terraform Destroy Apply
       - name: Terraform Apply Destroy
         run: terraform apply -auto-approve
+        working-directory: ec2-resources # Set the directory where your Terraform files are located
+
